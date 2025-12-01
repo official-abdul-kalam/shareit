@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ShareIt - OruzenLab</title>
+    <link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <nav class="sidebar">
+        <div class="brand">
+            <i class="fa-solid fa-share-nodes"></i>
+            <span>ShareIt</span>
+        </div>
+        <div class="nav-items">
+            <a href="/" class="nav-item {% if request.path == '/' %}active{% endif %}">
+                <i class="fa-solid fa-house"></i>
+                <span>Home</span>
+            </a>
+            <a href="/send" class="nav-item {% if request.path == '/send' %}active{% endif %}">
+                <i class="fa-solid fa-paper-plane"></i>
+                <span>Send</span>
+            </a>
+            <a href="/receive" class="nav-item {% if request.path == '/receive' %}active{% endif %}">
+                <i class="fa-solid fa-download"></i>
+                <span>Receive</span>
+            </a>
+        </div>
+        <div class="nav-footer">
+            <p>by OruzenLab</p>
+        </div>
+    </nav>
+
+    <main class="main-content">
+        {% block content %}{% endblock %}
+    </main>
+
+    <nav class="bottom-nav">
+        <a href="/" class="nav-item {% if request.path == '/' %}active{% endif %}">
+            <i class="fa-solid fa-house"></i>
+            <span>Home</span>
+        </a>
+        <a href="/send" class="nav-item {% if request.path == '/send' %}active{% endif %}">
+            <i class="fa-solid fa-paper-plane"></i>
+            <span>Send</span>
+        </a>
+        <a href="/receive" class="nav-item {% if request.path == '/receive' %}active{% endif %}">
+            <i class="fa-solid fa-download"></i>
+            <span>Receive</span>
+        </a>
+    </nav>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+
+</html>

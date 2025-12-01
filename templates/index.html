@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="hero-section glass-card">
+        <div class="hero-content">
+            <h1>Share Files <span class="text-gradient">Instantly</span></h1>
+            <p class="hero-subtitle">Secure, fast, and local file sharing for your devices.</p>
+
+            <div class="connection-box">
+                <div class="qr-wrapper">
+                    <img src="data:image/png;base64,{{ qr_code }}" alt="Scan to Connect">
+                </div>
+                <div class="connection-info">
+                    <h3>Connect Device</h3>
+                    <p>Scan this QR code or visit the URL below on your other device.</p>
+                    <div class="url-display">
+                        <span>{{ url }}</span>
+                        <button class="copy-btn" onclick="copyUrl('{{ url }}')">
+                            <i class="fa-regular fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="features-grid">
+        <div class="feature-card">
+            <i class="fa-solid fa-bolt"></i>
+            <h3>Blazing Fast</h3>
+            <p>Transfer files at local network speeds.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fa-solid fa-shield-halved"></i>
+            <h3>Secure</h3>
+            <p>Direct device-to-device transfer.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fa-solid fa-infinity"></i>
+            <h3>Unlimited</h3>
+            <p>Share files up to 30GB in size.</p>
+        </div>
+    </div>
+</div>
+{% endblock %}

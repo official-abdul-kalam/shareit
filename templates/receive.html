@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="page-header">
+        <h2>Receive Files</h2>
+        <p>Download files shared from other devices.</p>
+    </div>
+
+    <div class="receive-card glass-card">
+        <div class="files-container">
+            {% if files %}
+            <div class="files-header">
+                <span>File Name</span>
+                <span>Size</span>
+                <span>Actions</span>
+            </div>
+            <ul class="received-files-list">
+                {% for file in files %}
+                <li class="file-item" id="file-{{ loop.index }}">
+                    <div class="file-info-cell">
+                        <div class="file-icon-wrapper">
+                            <i class="fa-solid fa-file"></i>
+                        </div>
+                        <span class="file-name" title="{{ file.name }}">{{ file.name }}</span>
+                    </div>
+                    <div class="file-size-cell">
+                        <span class="badge">{{ file.size }}</span>
+                    </div>
+                    <div class="file-actions-cell">
+                        <a href="{{ file.url }}" class="action-btn-sm download" download title="Download">
+                            <i class="fa-solid fa-download"></i>
+                        </a>
+                        <button class="action-btn-sm delete"
+                            onclick="deleteFile('{{ file.name }}', 'file-{{ loop.index }}')" title="Delete">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+            {% else %}
+            <div class="empty-state">
+                <div class="empty-icon">
+                    <i class="fa-solid fa-box-open"></i>
+                </div>
+                <h3>No files yet</h3>
+                <p>Files sent from other devices will appear here.</p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}
